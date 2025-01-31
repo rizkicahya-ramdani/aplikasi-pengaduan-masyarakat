@@ -2,6 +2,26 @@
 
 include 'koneksi.php';
 
+session_start();
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $result = mysqli_query($connection, $sql);
+
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['nama'] = $row['nama'];
+        $_SESSION['email'] = $row['email'];
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "<script>alert('Email atau password anda salah!')</script>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,23 +64,23 @@ include 'koneksi.php';
                     <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
                 </div>
                 <div class="col-md-10 mx-auto col-lg-5">
-                    <form class="p-4 p-md-5 border rounded-3 bg-light">
-                    <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                    </div>
-                    <div class="checkbox mb-3">
-                        <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-                    <hr class="my-4">
-                    <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    <form class="p-4 p-md-5 border rounded-3 bg-light" method="POST">
+                        <div class="form-floating mb-3">
+                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary" name="submit">Login</button>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                     </form>
                 </div>
             </div>

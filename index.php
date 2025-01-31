@@ -2,6 +2,13 @@
 
 include 'koneksi.php';
 
+session_start();
+
+if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,30 +36,32 @@ include 'koneksi.php';
         <!-- header -->
         <header class="p-3 bg-custom text-white sticky-top">
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-center">
                     <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                         <h4>Ngadu Claire</h4>
                     </a>
 
-                    <ul class="nav ms-5 col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <ul class="nav ms-5 me-auto col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                     </ul>
-
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-                    </form>
-
-                    <div class="text-end">
-                        <button type="button" class="btn btn-outline-light me-2">Login</button>
-                        <button type="button" class="btn btn-warning">Sign-up</button>
-                    </div>
                 </div>
             </div>
         </header>
+
+        <section class="section-1 py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h4>Selamat Datang, <?= $_SESSION['nama'] ?>!</h4>
+                        <p><?= $_SESSION['email'] ?></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- Option 1: Bootstrap Bundle with Popper -->

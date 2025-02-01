@@ -42,6 +42,12 @@ if (isset($_POST['submit'])) {
         <!-- My CSS -->
         <link rel="stylesheet" href="style.css">
 
+        <style>
+            .bg-custom {
+                background-color: #6459DD;
+            }
+        </style>
+
         <title>Aplikasi Pengaduan Masyarakat</title>
     </head>
     <body>

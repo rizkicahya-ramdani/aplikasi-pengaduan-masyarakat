@@ -44,8 +44,10 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                 <div class="col-md-6">
                     <div class="card shadow-sm text-center p-4">
                         <div class="card-body">
+                            <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
                             <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?>!</h4>
                             <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
+                            <a href="#" class="btn btn-primary">Edit Profil</a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +67,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                         <div class="card-body text-center">
                             <h5 class="card-title">Lihat Laporan</h5>
                             <p class="card-text">Cek status laporan Anda atau laporan dari masyarakat lainnya.</p>
-                            <a href="#" class="btn btn-success">Lihat</a>
+                            <a href="#" class="btn btn-primary">Lihat</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +76,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                         <div class="card-body text-center">
                             <h5 class="card-title">Bantuan</h5>
                             <p class="card-text">Dapatkan informasi dan bantuan terkait penggunaan aplikasi.</p>
-                            <a href="#" class="btn btn-info">Bantuan</a>
+                            <a href="#" class="btn btn-primary">Bantuan</a>
                         </div>
                     </div>
                 </div>

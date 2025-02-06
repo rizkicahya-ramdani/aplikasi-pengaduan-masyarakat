@@ -48,6 +48,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                             <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?>!</h4>
                             <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
                             <a href="#" class="btn btn-primary">Edit Profil</a>
+                            <a href="logout.php" class="btn btn-danger">Logout</a>
                         </div>
                     </div>
                 </div>

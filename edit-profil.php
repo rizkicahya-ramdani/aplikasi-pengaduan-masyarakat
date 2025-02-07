@@ -24,9 +24,9 @@ include "koneksi.php";
                 <nav>
                     <ul class="nav">
                         <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Tentang Kami</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Panduan</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Kontak</a></li>
+                        <li><a href="about.php" class="nav-link px-2 text-white">Tentang Kami</a></li>
+                        <li><a href="panduan.php" class="nav-link px-2 text-white">Panduan</a></li>
+                        <li><a href="contact.php" class="nav-link px-2 text-white">Kontak</a></li>
                     </ul>
                 </nav>
             </div>

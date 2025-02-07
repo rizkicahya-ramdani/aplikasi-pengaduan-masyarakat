@@ -1,6 +1,17 @@
-<?php 
+<?php
 
-include "koneksi.php";
+include 'koneksi.php';
+
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Jika belum login, alihkan ke halaman login
+    exit();
+}
+
+$id_user = $_SESSION['id_user'];
+$detail = mysqli_query($connection, "SELECT * FROM users WHERE id_user = '$id_user'");
+$tampil = mysqli_fetch_assoc($detail);
 
 ?>
 
@@ -47,32 +58,32 @@ include "koneksi.php";
                             <table class="table table-bordered mt-4">
                                 <tr>
                                     <th>Nama</th>
-                                    <td></td>
+                                    <td><?= htmlspecialchars($_SESSION['nama']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td></td>
+                                    <td><?= htmlspecialchars($_SESSION['email']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>NIK</th>
-                                    <td></td>
+                                    <td><?= htmlspecialchars($_SESSION['nik']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>No HP</th>
-                                    <td></td>
+                                    <td><?= htmlspecialchars($_SESSION['no_hp']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>Alamat</th>
-                                    <td></td>
+                                    <td><?= htmlspecialchars($_SESSION['alamat']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>Role</th>
-                                    <td></td>
+                                    <td><?= htmlspecialchars($_SESSION['role']) ?></td>
                                 </tr>
                             </table>
 
                             <div class="text-center">
-                                <a href="edit_profil.php" class="btn btn-primary mt-3">Edit Profil</a>
+                                <a href="edit-profil.php" class="btn btn-primary mt-3">Edit Profil</a>
                                 <a href="index.php" class="btn btn-primary mt-3">Kembali</a>
                             </div>
                         </div>
@@ -81,7 +92,6 @@ include "koneksi.php";
             </div>
         </div>
     </section>
-
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>

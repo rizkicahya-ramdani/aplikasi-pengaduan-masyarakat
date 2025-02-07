@@ -4,32 +4,22 @@ include 'koneksi.php';
 
 session_start();
 
-// Jika sudah login, alihkan ke index.php
-if (isset($_SESSION['email'])) {
-    header("Location: index.php");
-    exit();
-}
-
 if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $email      = $_POST['email'];
+    $nama       = $_POST['nama'];
+    $password   = md5($_POST['password']);
 
-    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-    $result = mysqli_query($connection, $sql);
+    $insert_data = mysqli_query($connection, "INSERT INTO users (email, nama, password) VALUES ('$email', '$nama', '$password')");
 
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['id_user'] = $row['id_user'];
-        $_SESSION['nama'] = $row['nama'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['nik'] = $row['nik'];
-        $_SESSION['no_hp'] = $row['no_hp'];
-        $_SESSION['alamat'] = $row['alamat'];
-        $_SESSION['role'] = $row['role'];
-        header("Location: index.php");
-        exit();
+    if ($insert_data) {
+        echo "<script>
+            alert('Berhasil login! Data berhasil disimpan.');
+            window.location.replace('login.php');
+        </script>";
     } else {
-        echo "<script>alert('Email atau password anda salah!')</script>";
+        echo "<script>
+            alert('Gagal login! Data gagal disimpan.')
+        </script>";
     }
 }
 
@@ -63,19 +53,23 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <div class="login-container">
-        <h3 class="text-center mb-4"><strong>Login</strong></h3>
+        <h3 class="text-center mb-4"><strong>Register</strong></h3>
         <form action="" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
             </div>
             <div class="mb-3">
+                <label for="nama" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+            </div>
+            <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary w-100">Login</button>
+            <button type="submit" name="submit" class="btn btn-primary w-100">Daftar</button>
         </form>
-        <p class="text-center mt-3">Belum punya akun? <a href="register.php">Daftar</a></p>
+        <p class="text-center mt-3">Sudah punya akun? <a href="login.php">Login</a></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

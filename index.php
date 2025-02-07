@@ -47,7 +47,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                             <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
                             <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?>!</h4>
                             <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
-                            <a href="edit-profil.php" class="btn btn-primary">Edit Profil</a>
+                            <a href="detail-profil.php?id_user=<?= $_SESSION['id_user'] ?>" class="btn btn-primary">Detail Profil</a>
                             <a href="logout.php" class="btn btn-danger">Logout</a>
                         </div>
                     </div>

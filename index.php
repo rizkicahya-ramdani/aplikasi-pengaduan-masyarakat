@@ -2,6 +2,7 @@
 include 'koneksi.php';
 session_start();
 
+// Cegah akses tanpa login
 if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
@@ -27,11 +28,10 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                 <h4 class="mb-0">Ngadu Claire</h4>
                 <nav>
                     <ul class="nav">
-                        <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                        <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Tentang Kami</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Panduan</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Kontak</a></li>
                     </ul>
                 </nav>
             </div>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                             <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
                             <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?>!</h4>
                             <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
-                            <a href="#" class="btn btn-primary">Edit Profil</a>
+                            <a href="edit-profil.php" class="btn btn-primary">Edit Profil</a>
                             <a href="logout.php" class="btn btn-danger">Logout</a>
                         </div>
                     </div>

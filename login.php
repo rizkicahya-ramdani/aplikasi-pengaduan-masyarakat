@@ -4,6 +4,12 @@ include 'koneksi.php';
 
 session_start();
 
+// Jika sudah login, alihkan ke index.php
+if (isset($_SESSION['email'])) {
+    header("Location: index.php");
+    exit();
+}
+
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
@@ -56,11 +62,11 @@ if (isset($_POST['submit'])) {
         <form action="" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary w-100">Login</button>
         </form>

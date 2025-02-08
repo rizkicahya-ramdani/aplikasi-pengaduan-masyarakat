@@ -16,14 +16,18 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aplikasi Pengaduan Masyarakat</title>
 
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
 
+    <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,9 +39,9 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                 <nav>
                     <ul class="nav">
                         <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="about.php" class="nav-link px-2 text-white">Tentang Kami</a></li>
+                        <li><a href="#about-us" class="nav-link px-2 text-white">Tentang Kami</a></li>
                         <li><a href="panduan.php" class="nav-link px-2 text-white">Panduan</a></li>
-                        <li><a href="contact.php" class="nav-link px-2 text-white">Kontak</a></li>
+                        <li><a href="#contact" class="nav-link px-2 text-white">Kontak</a></li>
                     </ul>
                 </nav>
             </div>
@@ -51,7 +55,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                     <div class="card shadow-sm text-center p-4">
                         <div class="card-body">
                             <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
-                            <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?>!</h4>
+                            <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?></h4>
                             <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
                             <a href="detail-profil.php?id_user=<?= $_SESSION['id_user'] ?>" class="btn btn-primary">Detail Profil</a>
                             <a href="logout.php" class="btn btn-danger">Logout</a>
@@ -86,6 +90,87 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
                             <a href="#" class="btn btn-primary">Bantuan</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us py-5" id="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center">
+                    <img src="img/about-us.jpg" class="rounded" width="500" alt="Tentang Kami">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-3">Tentang Kami</h3>
+                    <p>
+                        Ngadu Claire adalah aplikasi berbasis web yang bertujuan untuk membantu masyarakat dalam menyampaikan pengaduan dengan cepat, mudah, dan transparan.
+                        Kami berkomitmen untuk menyediakan platform yang aman dan dapat diandalkan bagi seluruh masyarakat.
+                    </p>
+                    <p>
+                        Dengan teknologi modern, setiap laporan yang masuk akan ditangani secara profesional oleh pihak berwenang dan dapat dipantau oleh pelapor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <h3 class="text-center mb-5">Tim Kami</h3>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="img/user-profil.png" class="rounded-circle mb-3" width="120" height="120" alt="Founder">
+                    <h5>Rizki Cahya Ramdani</h5>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/user-profil.png" class="rounded-circle mb-3" width="120" height="120" alt="Developer">
+                    <h5>Aditya Nugraha</h5>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/user-profil.png" class="rounded-circle mb-3" width="120" height="120" alt="Support">
+                    <h5>Siti Aisyah</h5>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact py-5" id="contact">
+        <div class="container">
+            <h3 class="text-center mb-5">Hubungi Kami</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Alamat Kantor</h5>
+                    <p>Jl. Merdeka No. 123, Jakarta, Indonesia</p>
+                    <h5>Email</h5>
+                    <p>support@ngaduclaire.com</p>
+                    <h5>Telepon</h5>
+                    <p>+62 812-3456-7890</p>
+                    <h5>Media Sosial</h5>
+                    <a href="#" class="me-2 text-dark"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="me-2 text-dark"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+                </div>
+                <div class="col-md-6">
+                    <h5>Kirim Pesan</h5>
+                    <form action="proses_kontak.php" method="POST">
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Pesan</label>
+                            <textarea class="form-control" id="pesan" name="pesan" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </form>
                 </div>
             </div>
         </div>

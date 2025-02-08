@@ -2,6 +2,35 @@
 
 include "koneksi.php";
 
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Jika belum login, alihkan ke halaman login
+    exit();
+}
+
+// Ambil data pengguna dari database berdasarkan session
+$id_user = $_SESSION['id_user'];
+$query = mysqli_query($connection, "SELECT * FROM users WHERE id_user='$id_user'");
+$user = mysqli_fetch_assoc($query);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nama = mysqli_real_escape_string($connection, $_POST['nama']);
+    $nik = mysqli_real_escape_string($connection, $_POST['nik']);
+    $no_hp = mysqli_real_escape_string($connection, $_POST['no_hp']);
+    $alamat = mysqli_real_escape_string($connection, $_POST['alamat']);
+    $role = mysqli_real_escape_string($connection, $_POST['role']);
+    
+    $update = mysqli_query($connection, "UPDATE users SET nama='$nama', nik='$nik', no_hp='$no_hp', alamat='$alamat', role='$role' WHERE id_user='$id_user'");
+    
+    if ($update) {
+        $_SESSION['nama'] = $nama; // Perbarui session
+        echo "<script>alert('Profil berhasil diperbarui!'); window.location.href='detail-profil.php';</script>";
+    } else {
+        echo "<script>alert('Terjadi kesalahan, coba lagi!');</script>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,42 +68,39 @@ include "koneksi.php";
                 <div class="col-md-6">
                     <div class="card shadow-sm p-4">
                         <div class="card-body">
-                            <div class="text-center">
-                                <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
-                                <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?></h4>
-                                <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
-                            </div>
-                            <table class="table table-bordered mt-4">
-                                <tr>
-                                    <th>Nama</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>NIK</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>No HP</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Role</th>
-                                    <td></td>
-                                </tr>
-                            </table>
-
-                            <div class="text-center">
-                                <a href="edit_profil.php" class="btn btn-primary mt-3">Edit Profil</a>
-                                <a href="index.php" class="btn btn-primary mt-3">Kembali</a>
-                            </div>
+                            <h5 class="mb-4">Edit Profil</h5>
+                            <form method="POST">
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="nama" name="nama" value="<?= htmlspecialchars($user['nama']) ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value="<?= htmlspecialchars($user['email']) ?>" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nik" class="form-label">NIK</label>
+                                    <input type="text" class="form-control" id="nik" name="nik" value="<?= htmlspecialchars($user['nik']) ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="no_hp" class="form-label">No HP</label>
+                                    <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= htmlspecialchars($user['no_hp']) ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat</label>
+                                    <textarea class="form-control" id="alamat" name="alamat" required><?= htmlspecialchars($user['alamat']) ?></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select class="form-control" id="role" name="role">
+                                        <option value="Masyarakat" <?= $user['role'] == 'masyarakat' ? 'selected' : '' ?>>Masyarakat</option>
+                                        <option value="Petugas" <?= $user['role'] == 'petugas' ? 'selected' : '' ?>>Petugas</option>
+                                        <option value="Admin" <?= $user['role'] == 'admin' ? 'selected' : '' ?>>Admin</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                <a href="index.php" class="btn btn-secondary">Kembali</a>
+                            </form>
                         </div>
                     </div>
                 </div>

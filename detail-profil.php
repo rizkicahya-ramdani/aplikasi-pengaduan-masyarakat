@@ -52,39 +52,39 @@ $tampil = mysqli_fetch_assoc($detail);
                         <div class="card-body">
                             <div class="text-center">
                                 <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
-                                <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?></h4>
-                                <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
+                                <h4 class="card-title"><?= htmlspecialchars($tampil['nama']) ?></h4>
+                                <p class="card-text"><?= htmlspecialchars($tampil['email']) ?></p>
                             </div>
                             <table class="table table-bordered mt-4">
                                 <tr>
                                     <th>Nama</th>
-                                    <td><?= htmlspecialchars($_SESSION['nama']) ?></td>
+                                    <td><?= htmlspecialchars($tampil['nama']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td><?= htmlspecialchars($_SESSION['email']) ?></td>
+                                    <td><?= htmlspecialchars($tampil['email']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>NIK</th>
-                                    <td><?= htmlspecialchars($_SESSION['nik']) ?></td>
+                                    <td><?= htmlspecialchars($tampil['nik']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>No HP</th>
-                                    <td><?= htmlspecialchars($_SESSION['no_hp']) ?></td>
+                                    <td><?= htmlspecialchars($tampil['no_hp']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>Alamat</th>
-                                    <td><?= htmlspecialchars($_SESSION['alamat']) ?></td>
+                                    <td><?= htmlspecialchars($tampil['alamat']) ?></td>
                                 </tr>
                                 <tr>
                                     <th>Role</th>
-                                    <td><?= htmlspecialchars($_SESSION['role']) ?></td>
+                                    <td><?= htmlspecialchars($tampil['role']) ?></td>
                                 </tr>
                             </table>
 
                             <div class="text-center">
                                 <a href="edit-profil.php" class="btn btn-primary mt-3">Edit Profil</a>
-                                <a href="index.php" class="btn btn-primary mt-3">Kembali</a>
+                                <a href="index.php" class="btn btn-secondary mt-3">Kembali</a>
                             </div>
                         </div>
                     </div>

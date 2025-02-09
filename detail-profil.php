@@ -51,7 +51,7 @@ $tampil = mysqli_fetch_assoc($detail);
                     <div class="card shadow-sm p-4">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
+                                <img src="uploads/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
                                 <h4 class="card-title"><?= htmlspecialchars($tampil['nama']) ?></h4>
                                 <p class="card-text"><?= htmlspecialchars($tampil['email']) ?></p>
                             </div>

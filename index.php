@@ -7,6 +7,11 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
+
+$id_user = $_SESSION['id_user'];
+$detail = mysqli_query($connection, "SELECT * FROM users WHERE id_user = '$id_user'");
+$tampil = mysqli_fetch_assoc($detail);
+
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +26,6 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
 
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
@@ -48,16 +48,16 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
         </div>
     </header>
     
-    <section class="section-1 py-5">
+    <section class="user-profile py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card shadow-sm text-center p-4">
                         <div class="card-body">
-                            <img src="img/firefly.jpg" width="100" class="rounded-circle mb-3" alt="foto profil">
-                            <h4 class="card-title"><?= htmlspecialchars($_SESSION['nama']) ?></h4>
-                            <p class="card-text"><?= htmlspecialchars($_SESSION['email']) ?></p>
-                            <a href="detail-profil.php?id_user=<?= $_SESSION['id_user'] ?>" class="btn btn-primary">Detail Profil</a>
+                            <img src="uploads/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
+                            <h4 class="card-title"><strong><?= htmlspecialchars($tampil['nama']) ?></strong></h4>
+                            <p class="card-text"><?= htmlspecialchars($tampil['email']) ?></p>
+                            <a href="detail-profil.php?id_user=<?= $tampil['id_user'] ?>" class="btn btn-primary">Detail Profil</a>
                             <a href="logout.php" class="btn btn-danger">Logout</a>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
         </div>
     </section>
 
-    <section class="about-us py-5" id="about-us">
+    <section class="about-us py-5 my-3" id="about-us">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center">

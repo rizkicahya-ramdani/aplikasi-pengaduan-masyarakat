@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['id_user'] = $row['id_user'];
         $_SESSION['nama'] = $row['nama'];
         $_SESSION['email'] = $row['email'];
+        $_SESSION['gambar'] = $row['gambar'];
         $_SESSION['nik'] = $row['nik'];
         $_SESSION['no_hp'] = $row['no_hp'];
         $_SESSION['alamat'] = $row['alamat'];
@@ -41,7 +42,11 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Ngadu Claire</title>
+
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
         body {

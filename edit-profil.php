@@ -20,8 +20,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $no_hp = mysqli_real_escape_string($connection, $_POST['no_hp']);
     $alamat = mysqli_real_escape_string($connection, $_POST['alamat']);
     $role = mysqli_real_escape_string($connection, $_POST['role']);
-    
-    $update = mysqli_query($connection, "UPDATE users SET nama='$nama', nik='$nik', no_hp='$no_hp', alamat='$alamat', role='$role' WHERE id_user='$id_user'");
+
+    if ($_FILES['gambar']['name']) {
+        $gambar = $_FILES['gambar']['name'];
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
+
+        move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file);
+
+        $update = mysqli_query($connection, "UPDATE users SET nama='$nama', gambar='$gambar', nik='$nik', no_hp='$no_hp', alamat='$alamat', role='$role' WHERE id_user='$id_user'");
+    } else {
+        $update = mysqli_query($connection, "UPDATE users SET nama='$nama', nik='$nik', no_hp='$no_hp', alamat='$alamat', role='$role' WHERE id_user='$id_user'");
+    }
     
     if ($update) {
         $_SESSION['nama'] = $nama; // Perbarui session
@@ -69,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="card shadow-sm p-4">
                         <div class="card-body">
                             <h5 class="mb-4">Edit Profil</h5>
-                            <form method="POST">
+                            <form method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
                                     <input type="text" class="form-control" id="nama" name="nama" value="<?= htmlspecialchars($user['nama']) ?>" required>
@@ -77,6 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" value="<?= htmlspecialchars($user['email']) ?>" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gambar" class="form-label">Foto Profil</label>
+                                    <input type="file" class="form-control" id="gambar" name="gambar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="nik" class="form-label">NIK</label>

@@ -32,7 +32,7 @@ $tampil = mysqli_fetch_assoc($detail);
 </head>
 <body>
 
-    <header class="p-3 bg-custom text-white sticky-top">
+    <header class="p-3 bg-custom text-white sticky-top shadow">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
                 <h4 class="mb-0">Ngadu Claire</h4>
@@ -40,7 +40,6 @@ $tampil = mysqli_fetch_assoc($detail);
                     <ul class="nav">
                         <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
                         <li><a href="#about-us" class="nav-link px-2 text-white">Tentang Kami</a></li>
-                        <li><a href="panduan.php" class="nav-link px-2 text-white">Panduan</a></li>
                         <li><a href="#contact" class="nav-link px-2 text-white">Kontak</a></li>
                     </ul>
                 </nav>
@@ -57,7 +56,7 @@ $tampil = mysqli_fetch_assoc($detail);
                             <img src="uploads/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
                             <h4 class="card-title"><strong><?= htmlspecialchars($tampil['nama']) ?></strong></h4>
                             <p class="card-text"><?= htmlspecialchars($tampil['email']) ?></p>
-                            <a href="detail-profil.php?id_user=<?= $tampil['id_user'] ?>" class="btn btn-primary">Detail Profil</a>
+                            <a href="detail_profil.php?id_user=<?= $tampil['id_user'] ?>" class="btn btn-primary">Detail Profil</a>
                             <a href="logout.php" class="btn btn-danger">Logout</a>
                         </div>
                     </div>
@@ -69,7 +68,7 @@ $tampil = mysqli_fetch_assoc($detail);
                         <div class="card-body text-center">
                             <h5 class="card-title">Laporkan Masalah</h5>
                             <p class="card-text">Laporkan permasalahan yang Anda temui secara mudah dan cepat.</p>
-                            <a href="#" class="btn btn-primary">Laporkan</a>
+                            <a href="pengaduan.php" class="btn btn-primary">Laporkan</a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +77,7 @@ $tampil = mysqli_fetch_assoc($detail);
                         <div class="card-body text-center">
                             <h5 class="card-title">Lihat Laporan</h5>
                             <p class="card-text">Cek status laporan Anda atau laporan dari masyarakat lainnya.</p>
-                            <a href="#" class="btn btn-primary">Lihat</a>
+                            <a href="lihat_laporan.php" class="btn btn-primary">Lihat</a>
                         </div>
                     </div>
                 </div>

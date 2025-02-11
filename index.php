@@ -86,7 +86,7 @@ $tampil = mysqli_fetch_assoc($detail);
                         <div class="card-body text-center">
                             <h5 class="card-title">Bantuan</h5>
                             <p class="card-text">Dapatkan informasi dan bantuan terkait penggunaan aplikasi.</p>
-                            <a href="#" class="btn btn-primary">Bantuan</a>
+                            <a href="panduan.php" class="btn btn-primary">Bantuan</a>
                         </div>
                     </div>
                 </div>
@@ -158,17 +158,17 @@ $tampil = mysqli_fetch_assoc($detail);
                     <form action="proses_kontak.php" method="POST">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $tampil['nama'] ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $tampil['email'] ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Pesan</label>
                             <textarea class="form-control" id="pesan" name="pesan" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type="submit" name="kirim_pesan" class="btn btn-primary">Kirim</button>
                     </form>
                 </div>
             </div>

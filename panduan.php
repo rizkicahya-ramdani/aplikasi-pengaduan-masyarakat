@@ -1,3 +1,16 @@
+<?php
+
+include "koneksi.php";
+
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Jika belum login, alihkan ke halaman login
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

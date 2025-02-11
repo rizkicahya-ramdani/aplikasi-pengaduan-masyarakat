@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if ($update) {
         $_SESSION['nama'] = $nama; // Perbarui session
-        echo "<script>alert('Profil berhasil diperbarui!'); window.location.href='detail-profil.php';</script>";
+        echo "<script>alert('Profil berhasil diperbarui!'); window.location.href='detail_profil.php';</script>";
     } else {
         echo "<script>alert('Terjadi kesalahan, coba lagi!');</script>";
     }

@@ -20,6 +20,7 @@ $tampil = mysqli_fetch_assoc($detail);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <title>Aplikasi Pengaduan Masyarakat</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -42,7 +43,7 @@ $tampil = mysqli_fetch_assoc($detail);
         </div>
     </header>
 
-    <section class="section-1 py-5">
+    <section class="detail-profil py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">

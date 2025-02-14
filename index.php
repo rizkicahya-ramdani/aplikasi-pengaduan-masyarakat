@@ -2,9 +2,8 @@
 include 'koneksi.php';
 session_start();
 
-// Cegah akses tanpa login
-if (!isset($_SESSION['nama']) && !isset($_SESSION['email'])) {
-    header("Location: login.php");
+if (isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'petugas')) {
+    header("Location: dashboard.php"); // Redirect admin dan petugas ke dashboard
     exit();
 }
 

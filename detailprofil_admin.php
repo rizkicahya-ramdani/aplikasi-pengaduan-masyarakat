@@ -21,7 +21,7 @@ $tampil = mysqli_fetch_assoc($detail);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Ngadu Claire - Detail Profil</title>
+    <title>Ngadu Claire - Detail Profil (Admin)</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -34,9 +34,7 @@ $tampil = mysqli_fetch_assoc($detail);
                 <h4 class="mb-0">Ngadu Claire</h4>
                 <nav>
                     <ul class="nav">
-                        <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="index.php" class="nav-link px-2 text-white">Tentang Kami</a></li>
-                        <li><a href="index.php" class="nav-link px-2 text-white">Kontak</a></li>
+                        <li><a href="dashboard.php" class="nav-link px-2 text-white">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>
@@ -51,7 +49,7 @@ $tampil = mysqli_fetch_assoc($detail);
                         <div class="card-body">
                             <h5 class="mb-4 text-center"><strong>Detail Profil</strong></h5>
                             <div class="text-center">
-                                <img src="gambar_laporan/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
+                                <img src="uploads/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
                                 <h4 class="card-title"><?= htmlspecialchars($tampil['nama']) ?></h4>
                                 <p class="card-text"><?= htmlspecialchars($tampil['email']) ?></p>
                             </div>
@@ -83,7 +81,7 @@ $tampil = mysqli_fetch_assoc($detail);
                             </table>
 
                             <div class="text-center">
-                                <a href="edit_profil.php" class="btn btn-primary mt-3">Edit Profil</a>
+                                <a href="editprofil_admin.php" class="btn btn-primary mt-3">Edit Profil</a>
                                 <a href="index.php" class="btn btn-secondary mt-3">Kembali</a>
                             </div>
                         </div>

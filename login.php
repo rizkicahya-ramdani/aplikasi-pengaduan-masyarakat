@@ -27,7 +27,13 @@ if (isset($_POST['submit'])) {
         $_SESSION['no_hp'] = $row['no_hp'];
         $_SESSION['alamat'] = $row['alamat'];
         $_SESSION['role'] = $row['role'];
-        header("Location: index.php");
+
+        // Cek role dan arahkan ke halaman yang sesuai
+        if ($row['role'] == 'admin' || $row['role'] == 'petugas') {
+            header("Location: dashboard.php"); // Halaman Dashboard Admin/Petugas
+        } else {
+            header("Location: index.php"); // Halaman Utama untuk masyarakat
+        }
         exit();
     } else {
         echo "<script>alert('Email atau password anda salah!')</script>";

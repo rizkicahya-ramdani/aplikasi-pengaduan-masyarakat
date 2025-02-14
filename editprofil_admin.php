@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ngadu Claire - Edit Profil</title>
+    <title>Ngadu Claire - Edit Profil (Admin)</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -61,9 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h4 class="mb-0">Ngadu Claire</h4>
                 <nav>
                     <ul class="nav">
-                        <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="index.php" class="nav-link px-2 text-white">Tentang Kami</a></li>
-                        <li><a href="index.php" class="nav-link px-2 text-white">Kontak</a></li>
+                        <li><a href="dashboard.php" class="nav-link px-2 text-white">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>

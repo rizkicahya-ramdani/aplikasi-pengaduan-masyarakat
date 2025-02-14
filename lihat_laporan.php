@@ -12,7 +12,10 @@ $role = $_SESSION['role']; // Menentukan apakah user adalah masyarakat, petugas,
 
 // Query untuk mengambil data pengaduan
 if ($role == 'masyarakat') {
-    $query = "SELECT * FROM pengaduan WHERE id_user = '$id_user' ORDER BY tanggal_pengaduan DESC";
+    $query = "SELECT p.* FROM pengaduan p 
+              JOIN users u ON p.id_user = u.id_user 
+              WHERE u.role = 'masyarakat' 
+              ORDER BY p.tanggal_pengaduan DESC";
 } else {
     $query = "SELECT * FROM pengaduan ORDER BY tanggal_pengaduan DESC";
 }
@@ -53,7 +56,7 @@ $result = mysqli_query($connection, $query);
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm">
-                            <img src="uploads/<?php echo htmlspecialchars($row['gambar']); ?>" class="card-img-top" alt="Gambar Pengaduan">
+                            <img src="gambar_laporan/<?php echo htmlspecialchars($row['gambar']); ?>" class="card-img-top" alt="Gambar Pengaduan">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($row['judul']); ?></h5>
                                 <p class="card-text"><small class="text-muted"><?php echo $row['tanggal_pengaduan']; ?></small></p>

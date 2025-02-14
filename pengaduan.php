@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $gambar = "";
     if ($_FILES['gambar']['name']) {
         $gambar = $_FILES['gambar']['name'];
-        $target_dir = "uploads/";
+        $target_dir = "gambar_laporan/";
         $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
         move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file);
     }

@@ -55,7 +55,7 @@ if (!$pengaduan) {
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
                     <div class="card shadow-sm">
-                        <img src="uploads/<?php echo htmlspecialchars($pengaduan['gambar']); ?>" class="card-img-top" alt="Gambar Laporan">
+                        <img src="gambar_laporan/<?php echo htmlspecialchars($pengaduan['gambar']); ?>" class="card-img-top" alt="Gambar Laporan">
                         <div class="card-body">
                             <h5 class="card-title mb-3"><strong><?php echo htmlspecialchars($pengaduan['judul']); ?></strong></h5>
                             <p class="card-text"><strong>Pelapor:</strong> <?php echo htmlspecialchars($pengaduan['nama']); ?></p>

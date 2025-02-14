@@ -2,6 +2,11 @@
 include "koneksi.php";
 session_start();
 
+if (isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'petugas')) {
+    header("Location: dashboard.php"); // Redirect admin dan petugas ke dashboard
+    exit();
+}
+
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();

@@ -4,6 +4,12 @@ include "koneksi.php";
 
 session_start();
 
+// mencegah admin masuk ke halaman masyarakat
+if (!isset($_SESSION['role']) || ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'petugas')) {
+    header("Location: index.php"); // Redirect ke halaman utama jika bukan admin atau petugas
+    exit();
+}
+
 if (!isset($_SESSION['email'])) {
     header("Location: login.php"); // Jika belum login, alihkan ke halaman login
     exit();

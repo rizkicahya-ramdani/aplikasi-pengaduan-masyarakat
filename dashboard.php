@@ -1,9 +1,12 @@
 <?php
+
 include 'koneksi.php';
+
 session_start();
 
+// mencegah admin masuk ke halaman masyarakat
 if (!isset($_SESSION['role']) || ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'petugas')) {
-    header("Location: ../index.php"); // Redirect ke halaman utama jika bukan admin atau petugas
+    header("Location: index.php"); // Redirect ke halaman utama jika bukan admin atau petugas
     exit();
 }
 

@@ -4,6 +4,12 @@ include 'koneksi.php';
 
 session_start();
 
+// mencegah masyarakat masuk ke halaman admin
+if (isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'petugas')) {
+    header("Location: dashboard.php"); // Redirect admin dan petugas ke dashboard
+    exit();
+}
+
 if (!isset($_SESSION['email'])) {
     header("Location: login.php"); // Jika belum login, alihkan ke halaman login
     exit();
@@ -51,7 +57,7 @@ $tampil = mysqli_fetch_assoc($detail);
                         <div class="card-body">
                             <h5 class="mb-4 text-center"><strong>Detail Profil</strong></h5>
                             <div class="text-center">
-                                <img src="gambar_laporan/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
+                                <img src="uploads/<?= $tampil['gambar'] ?>" width="100" class="rounded-circle mb-3" alt="foto profil">
                                 <h4 class="card-title"><?= htmlspecialchars($tampil['nama']) ?></h4>
                                 <p class="card-text"><?= htmlspecialchars($tampil['email']) ?></p>
                             </div>

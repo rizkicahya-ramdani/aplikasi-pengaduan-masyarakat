@@ -15,8 +15,6 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-$query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'");
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +22,7 @@ $query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'"
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ngadu Claire - Beranda</title>
+    <title>Ngadu Claire - Data Masyarakat</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -40,6 +38,13 @@ $query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'"
             min-height: 70vh;
         }
     </style>
+
+    <script>
+        function fungsiHapus() {
+            return confirm("Apakah anda yakin ingin menghapus?");
+        }
+    </script>
+
 </head>
 <body>
 
@@ -62,7 +67,7 @@ $query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'"
                 <div class="col">
                     <div class="card shadow-sm p-4">
                         <div class="card-body">
-                            <h4>Data Masyarakat</h4>
+                            <h4 class="mb-3">Data Masyarakat</h4>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -78,6 +83,9 @@ $query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'"
                                 <tbody>
                                     <?php 
                                     $no = 1;
+
+                                    $query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'");
+                                    
                                     while ($row = mysqli_fetch_assoc($query)) { ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
@@ -87,8 +95,8 @@ $query = mysqli_query($connection, "SELECT * FROM users WHERE role='masyarakat'"
                                             <td><?= htmlspecialchars($row['no_hp']); ?></td>
                                             <td><?= htmlspecialchars($row['alamat']); ?></td>
                                             <td>
-                                                <a href="" class="btn btn-sm btn-primary">Lihat</a>
-                                                <button type="button" class="btn btn-sm btn-danger">Hapus</button>
+                                                <a href="detailprofil_masyarakat.php?id_user=<?= $row['id_user'] ?>" class="btn btn-sm btn-primary mb-2">Lihat</a>
+                                                <a href="hapus_masyarakat.php?id_user=<?= $row['id_user'] ?>" onclick="fungsiHapus()" class="btn btn-sm btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

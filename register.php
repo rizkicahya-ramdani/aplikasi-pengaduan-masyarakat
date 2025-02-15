@@ -13,12 +13,12 @@ if (isset($_POST['submit'])) {
 
     if ($insert_data) {
         echo "<script>
-            alert('Berhasil login! Data berhasil disimpan.');
+            alert('Data berhasil disimpan! Silahkan login dahulu.');
             window.location.replace('login.php');
         </script>";
     } else {
         echo "<script>
-            alert('Gagal login! Data gagal disimpan.')
+            alert('Data gagal disimpan!');
         </script>";
     }
 }

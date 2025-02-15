@@ -56,9 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h4 class="mb-0">Ngadu Claire</h4>
                 <nav>
                     <ul class="nav">
-                        <li><a href="index.php" class="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="index.php" class="nav-link px-2 text-white">Tentang Kami</a></li>
-                        <li><a href="index.php" class="nav-link px-2 text-white">Kontak</a></li>
+                        <li><a href="dashboard.php" class="nav-link px-2 text-white">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>
